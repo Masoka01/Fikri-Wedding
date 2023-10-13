@@ -119,6 +119,16 @@ body {
 
 .home .couple img {
   width: 100%;
+  animation: goyang 2s linear infinite alternate;
+}
+
+@keyframes goyang {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .home .heart {
@@ -136,10 +146,36 @@ body {
   color: var(--pr);
 }
 
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 4s ease, transform 1s ease;
+}
+
+.slide-from-left {
+  transform: translateX(-100%);
+}
+
+.slide-from-right {
+  transform: translateX(100%);
+}
+
+.slide-from-bottom {
+  transform: translateY(100%);
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
 .info {
   background-color: var(--bg);
   padding-top: 10rem;
   padding-bottom: 8rem;
+}
+
+.info a {
+  animation: goyang 2s linear infinite alternate;
 }
 
 .info .card {
@@ -165,69 +201,9 @@ body {
   font-weight: 300;
 }
 
-#comment-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: var(--pr);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: var(--pr);
-}
-
-#comments {
-  max-width: 600px;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-#comments div {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-}
-
-#comments strong {
-  color: var(--pr);
-}
-
 .galeri,
-.hadiah {
+.hadiah,
+.doa {
   background-color: #f5f5f5;
   padding-top: 10rem;
   padding-bottom: 8rem;
@@ -337,12 +313,12 @@ footer li {
     padding: 30px;
     margin: 5px;
   }
-  
+
   #comment-form {
-    max-width: 350px;
+    max-width: 250px;
   }
 
   #comments {
-    max-width: 350px;
+    max-width: 250px;
   }
 }

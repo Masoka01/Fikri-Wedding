@@ -60,24 +60,47 @@ audioIconWrapper.addEventListener("click", function () {
 
 disableSCroll();
 
-//Komentar
-function submitComment(event) {
-  event.preventDefault(); // Menghentikan pengiriman form default
+// Animasi
+function handleScrollAnimation() {
+  const elements = document.querySelectorAll(".animate-on-scroll");
 
-  const name = document.getElementById("name").value;
-  const comment = document.getElementById("comment").value;
+  elements.forEach((element) => {
+    const elementTop = element.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
 
-  // Buat elemen baru untuk menampilkan komentar
-  const commentElement = document.createElement("div");
-  commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`;
-
-  // Tambahkan komentar ke dalam div "comments"
-  document.getElementById("comments").appendChild(commentElement);
-
-  // Bersihkan input
-  document.getElementById("name").value = "";
-  document.getElementById("comment").value = "";
+    if (elementTop < windowHeight) {
+      element.classList.add("show");
+    }
+  });
 }
 
-// Mengaitkan fungsi submitComment dengan form
-document.getElementById("comment-form").addEventListener("submit", submitComment);
+// Tambahkan event listener saat pengguna menggulir
+window.addEventListener("scroll", handleScrollAnimation);
+
+// Panggil fungsi untuk menampilkan elemen yang sudah terlihat saat halaman dimuat
+handleScrollAnimation();
+
+// Animasi Foto
+const gambar = document.getElementById("gambar");
+
+// Fungsi untuk mengaktifkan goyangan
+function aktifkanGoyangan() {
+  gambar.classList.add("bergoyang");
+}
+
+// Fungsi untuk menonaktifkan goyangan
+function nonaktifkanGoyangan() {
+  gambar.classList.remove("bergoyang");
+}
+
+// Setel event mouseover dan mouseout untuk mengaktifkan dan menonaktifkan goyangan
+gambar.addEventListener("mouseover", aktifkanGoyangan);
+gambar.addEventListener("mouseout", nonaktifkanGoyangan);
+
+// Komentar
+(function () { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://fikri-wedding.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
